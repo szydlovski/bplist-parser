@@ -21,6 +21,7 @@ import { promises as fs } from 'fs';
 (async () => {
   const buffer = await fs.readFile('./Profile.bplist');
   const bplistData = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+  const properties = parseBplist(bplistData);
 })();
 ```
 
