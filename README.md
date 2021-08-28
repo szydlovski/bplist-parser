@@ -11,17 +11,17 @@ import { parseBplist } from '@szydlovski/bplist-parser';
 
 // browser
 (async () => {
-  const bplistResponse = await fetch('./Profile.bplist');
-  const bplistData = await bplistResponse.arrayBuffer();
-  const properties = parseBplist(bplistData);
+  const response = await fetch('./Profile.bplist');
+  const arrayBuffer = await response.arrayBuffer();
+  const properties = parseBplist(arrayBuffer);
 })();
 
 // node
 import { promises as fs } from 'fs';
 (async () => {
   const buffer = await fs.readFile('./Profile.bplist');
-  const bplistData = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
-  const properties = parseBplist(bplistData);
+  const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+  const properties = parseBplist(arrayBuffer);
 })();
 ```
 
